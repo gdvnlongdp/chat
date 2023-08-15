@@ -1,0 +1,5 @@
+{"level":"warn","message":"Không tìm thấy whitelist. Trạng thái whitelist đã tắt"}
+{"level":"debug","message":"Hệ thống đang chạy dưới chế độ nhà phát triển (development)"}
+{"level":"debug","message":"Kết nối với dữ liệu hệ thống thông qua chuỗi kết nối"}
+{"level":"info","message":"Socket đã được khởi tạo"}
+{"level":"info","message":"Server đã được khởi tạo và đang lắng nghe ... "}
