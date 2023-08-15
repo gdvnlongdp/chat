@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const add_friend_1 = __importDefault(require("../handlers/relations/add-friend"));
+const block_user_1 = __importDefault(require("../handlers/relations/block-user"));
+const get_friend_list_1 = __importDefault(require("../handlers/relations/get-friend-list"));
+const unblock_1 = __importDefault(require("../handlers/relations/unblock"));
+const unfriend_1 = __importDefault(require("../handlers/relations/unfriend"));
+const verify_token_1 = __importDefault(require("../middlewares/verify-token"));
+const add_friend_2 = __importDefault(require("../validations/relations/add-friend"));
+const block_user_2 = __importDefault(require("../validations/relations/block-user"));
+const unblock_2 = __importDefault(require("../validations/relations/unblock"));
+const unfriend_2 = __importDefault(require("../validations/relations/unfriend"));
+const relationRouter = express_1.default.Router();
+relationRouter.get("/friends/list", verify_token_1.default, get_friend_list_1.default);
+relationRouter.post("/friends/add", verify_token_1.default, (0, add_friend_2.default)(), add_friend_1.default);
+relationRouter.post("/friends/unfriend", verify_token_1.default, (0, unfriend_2.default)(), unfriend_1.default);
+relationRouter.post("/users/block", verify_token_1.default, (0, block_user_2.default)(), block_user_1.default);
+relationRouter.post("/users/unblock", verify_token_1.default, (0, unblock_2.default)(), unblock_1.default);
+exports.default = relationRouter;

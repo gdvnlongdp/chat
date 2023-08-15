@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const get_locates_1 = __importDefault(require("../handlers/location_handlers/get-locates"));
+const new_location_1 = __importDefault(require("../handlers/location_handlers/new-location"));
+const verify_token_1 = __importDefault(require("../middlewares/verify-token"));
+const get_locates_by_username_1 = __importDefault(require("../handlers/location_handlers/get-locates-by-username"));
+const check_1 = __importDefault(require("../handlers/location_handlers/check"));
+const get_locates_by_group_1 = __importDefault(require("../handlers/location_handlers/get-locates-by-group"));
+const get_locates_filter_1 = __importDefault(require("../handlers/location_handlers/get-locates-filter"));
+const locationRouter = (0, express_1.Router)();
+locationRouter.post("/check", check_1.default);
+locationRouter.post("/filter/:groupId", get_locates_filter_1.default);
+locationRouter.post("/location-by-group/:groupId", get_locates_by_group_1.default);
+locationRouter.post("/trace/:username", get_locates_by_username_1.default);
+locationRouter.post("/:userId", verify_token_1.default, get_locates_1.default);
+locationRouter.post("/", verify_token_1.default, new_location_1.default);
+exports.default = locationRouter;

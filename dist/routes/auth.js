@@ -1,0 +1,26 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const login_1 = __importDefault(require("../handlers/auth_handlers/login"));
+const refresh_token_1 = __importDefault(require("../handlers/auth_handlers/refresh-token"));
+const register_1 = __importDefault(require("../handlers/auth_handlers/register"));
+const reset_password_1 = __importDefault(require("../handlers/auth_handlers/reset-password"));
+const send_otp_register_1 = __importDefault(require("../handlers/auth_handlers/send-otp-register"));
+const send_otp_reset_password_1 = __importDefault(require("../handlers/auth_handlers/send-otp-reset-password"));
+const login_2 = __importDefault(require("../validations/auth/login"));
+const refresh_token_2 = __importDefault(require("../validations/auth/refresh-token"));
+const register_2 = __importDefault(require("../validations/auth/register"));
+const reset_password_2 = __importDefault(require("../validations/auth/reset-password"));
+const send_otp_register_2 = __importDefault(require("../validations/auth/send-otp-register"));
+const send_otp_reset_password_2 = __importDefault(require("../validations/auth/send-otp-reset-password"));
+const authRouter = express_1.default.Router();
+authRouter.post("/login", (0, login_2.default)(), login_1.default);
+authRouter.post("/register", (0, register_2.default)(), register_1.default);
+authRouter.post("/refresh-token", (0, refresh_token_2.default)(), refresh_token_1.default);
+authRouter.post("/register/otp/send", (0, send_otp_register_2.default)(), send_otp_register_1.default);
+authRouter.post("/password/otp/send", (0, send_otp_reset_password_2.default)(), send_otp_reset_password_1.default);
+authRouter.post("/password/reset", (0, reset_password_2.default)(), reset_password_1.default);
+exports.default = authRouter;

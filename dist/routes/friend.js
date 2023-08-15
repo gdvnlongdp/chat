@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const accept_1 = __importDefault(require("../handlers/friend_handlers/accept"));
+const add_friend_1 = __importDefault(require("../handlers/friend_handlers/add-friend"));
+const cancel_request_1 = __importDefault(require("../handlers/friend_handlers/cancel-request"));
+const get_friend_list_1 = __importDefault(require("../handlers/friend_handlers/get-friend-list"));
+const get_request_list_1 = __importDefault(require("../handlers/friend_handlers/get-request-list"));
+const reject_request_1 = __importDefault(require("../handlers/friend_handlers/reject-request"));
+const unfriend_1 = __importDefault(require("../handlers/friend_handlers/unfriend"));
+const verify_token_1 = __importDefault(require("../middlewares/verify-token"));
+const friendRouter = express_1.default.Router();
+friendRouter.get("/", verify_token_1.default, get_friend_list_1.default);
+friendRouter.get("/requests", verify_token_1.default, get_request_list_1.default);
+// friendRouter.get("/requests", verifyToken, getRequestedList);
+friendRouter.post("/add", verify_token_1.default, add_friend_1.default);
+friendRouter.post("/accept", verify_token_1.default, accept_1.default);
+friendRouter.post("/reject", verify_token_1.default, reject_request_1.default);
+friendRouter.post("/cancel", verify_token_1.default, cancel_request_1.default);
+friendRouter.delete("/unfriend", verify_token_1.default, unfriend_1.default);
+exports.default = friendRouter;
