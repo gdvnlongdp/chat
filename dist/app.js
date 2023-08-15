@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
-const helmet_1 = __importDefault(require("helmet"));
+//import helmet from "helmet";
 const http_1 = __importDefault(require("http"));
 const morgan_1 = __importDefault(require("morgan"));
 const mongo_1 = __importDefault(require("./drivers/mongo"));
@@ -48,7 +48,7 @@ app.use((0, cors_1.default)({
     origin: whitelist_1.default,
     optionsSuccessStatus: 200,
 }));
-app.use((0, helmet_1.default)());
+//app.use(helmet());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Sử dụng morgan trên development mode
