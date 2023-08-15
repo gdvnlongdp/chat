@@ -1,7 +1,7 @@
 import cors from "cors";
 import express, { Application } from "express";
 import fs from "fs";
-import helmet from "helmet";
+//import helmet from "helmet";
 import http from "http";
 import https from "https";
 import morgan from "morgan";
@@ -28,7 +28,7 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-app.use(helmet());
+//app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
